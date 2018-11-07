@@ -3,14 +3,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
-const Schema = mongoose.Schema;
-const miniMERNSchema = new mongoose.Schema({
-  name: String,
-  picture: String,
-  description: String
-});
-const miniMERNModel = mongoose.model('miniMERNModel', miniMERNSchema);
-
 const app = express();
 
 // Uses - Bodyparser Middleware
