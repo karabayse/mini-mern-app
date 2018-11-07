@@ -5,7 +5,7 @@ import uuid from 'uuid';
 
 class Dashboard extends Component {
   state = {
-    names: [
+    users: [
       { id: uuid(), name: 'Michelangelo' },
       { id: uuid(), name: 'Leonardo' },
       { id: uuid(), name: 'Donatello' },
@@ -14,7 +14,7 @@ class Dashboard extends Component {
   }
 
   render() {
-    const { items } = this.state;
+    const { users } = this.state;
     return(
       <Container>
         <Button
@@ -24,15 +24,28 @@ class Dashboard extends Component {
             const name = prompt('Enter Name');
             if(name) {
               this.setTate(state => ({
-                names: [...state.items, { id: uuid(), name }]
+                users: [...state.users, { id: uuid(), name }]
               }));
             }
           }}
-        >Add User</Button>
+        >
+        Add User
+        </Button>
+
+        <ListGroup>
+          <TransitionGroup className="dashboard">
+            {users.map(({ id, name }) => (
+              <CSSTransition key={id} timeout={500} classNames="fade">
+                <ListGroupItem>
+                  {name}
+                </ListGroupItem>
+              </CSSTransition>
+            ))}
+          </TransitionGroup>
+        </ListGroup>
       </Container>
     );
   }
-
 }
 
 export default Dashboard;
