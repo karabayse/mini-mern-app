@@ -11,4 +11,4 @@ const miniMERNSchema = new mongoose.Schema({
 // Model
 const miniMERNModel = mongoose.model('miniMERNModel', miniMERNSchema);
 
-module.exports = User = mongoose.model('user, miniMERNSchema');
+module.exports = User = mongoose.model('user', miniMERNSchema);

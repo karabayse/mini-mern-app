@@ -3,6 +3,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
+const users = require('./routes/api/users');
+
 const app = express();
 
 // Uses - Bodyparser Middleware
@@ -13,6 +15,9 @@ mongoose
   .connect('localhost:27017/miniMERNDB')
   .then(() => console.log('MongoDB Connected'))
   .catch(err => console.log(err));
+
+// User Routes
+app.use('/api/users', users);
 
 const port = process.env.PORT || 4000;
 
