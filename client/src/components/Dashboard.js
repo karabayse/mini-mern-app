@@ -23,7 +23,7 @@ class Dashboard extends Component {
           onClick={() => {
             const name = prompt('Enter Name');
             if(name) {
-              this.setTate(state => ({
+              this.setState(state => ({
                 users: [...state.users, { id: uuid(), name }]
               }));
             }
@@ -37,6 +37,17 @@ class Dashboard extends Component {
             {users.map(({ id, name }) => (
               <CSSTransition key={id} timeout={500} classNames="fade">
                 <ListGroupItem>
+                <Button
+                  className="remove-btn"
+                  color="danger"
+                  size="sm"
+                  onClick={() => {
+                    this.setState(state => ({
+                      users: state.users.filter(user => user.id !== id)
+                    }));
+                  }}
+                >&times;
+                </Button>
                   {name}
                 </ListGroupItem>
               </CSSTransition>
