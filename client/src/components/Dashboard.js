@@ -33,6 +33,14 @@ class Dashboard extends Component {
                 <div>{name}</div>
                 <div>{picture}</div>
                 <div>{description}</div>
+                <div>
+                  <Button
+                    className="edit-btn"
+                    color="secondary"
+                    size="sm"
+                  >Edit
+                  </Button>
+                </div>
                 </ListGroupItem>
               </CSSTransition>
             ))}
