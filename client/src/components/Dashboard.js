@@ -1,37 +1,24 @@
 import React, { Component } from 'react';
 import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import uuid from 'uuid';
+// import uuid from 'uuid';
+import { connect } from 'react-redux';
+import { getUsers, deleteUser } from '../actions/userActions';
+import PropTypes from 'prop-types';
 
 class Dashboard extends Component {
-  state = {
-    users: [
-      { id: uuid(), name: 'Michelangelo' },
-      { id: uuid(), name: 'Leonardo' },
-      { id: uuid(), name: 'Donatello' },
-      { id: uuid(), name: 'Raphael' }
-    ]
+  componentDidMount() {
+    this.props.getUsers();
   }
 
+  onDeleteClick = (id) => {
+    this.props.deleteUser(id);
+  };
+
   render() {
-    const { users } = this.state;
+    const { users } = this.props.user;
     return(
       <Container>
-        <Button
-          color="dark"
-          style={{marginBottom: '2rem'}}
-          onClick={() => {
-            const name = prompt('Enter Name');
-            if(name) {
-              this.setState(state => ({
-                users: [...state.users, { id: uuid(), name }]
-              }));
-            }
-          }}
-        >
-        Add User
-        </Button>
-
         <ListGroup>
           <TransitionGroup className="dashboard">
             {users.map(({ id, name }) => (
@@ -41,11 +28,7 @@ class Dashboard extends Component {
                   className="remove-btn"
                   color="danger"
                   size="sm"
-                  onClick={() => {
-                    this.setState(state => ({
-                      users: state.users.filter(user => user.id !== id)
-                    }));
-                  }}
+                  onClick={this.onDeleteClick.bind(this, id)}
                 >&times;
                 </Button>
                   {name}
@@ -59,4 +42,13 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+Dashboard.propTypes = {
+  getUsers: PropTypes.func.isRequired,
+  user: PropTypes.object.isRequired
+}
+
+const mapStateToProps = (state) => ({
+  user: state.user
+});
+
+export default connect(mapStateToProps, { getUsers, deleteUser })(Dashboard);
