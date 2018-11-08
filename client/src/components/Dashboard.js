@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-// import uuid from 'uuid';
 import { connect } from 'react-redux';
 import { getUsers, deleteUser } from '../actions/userActions';
 import PropTypes from 'prop-types';
@@ -21,7 +20,7 @@ class Dashboard extends Component {
       <Container>
         <ListGroup>
           <TransitionGroup className="dashboard">
-            {users.map(({ _id, name }) => (
+            {users.map(({ _id, name, picture, description }) => (
               <CSSTransition key={_id} timeout={500} classNames="fade">
                 <ListGroupItem>
                 <Button
@@ -32,6 +31,8 @@ class Dashboard extends Component {
                 >&times;
                 </Button>
                   {name}
+                  {picture}
+                  {description}
                 </ListGroupItem>
               </CSSTransition>
             ))}

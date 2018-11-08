@@ -1,4 +1,3 @@
-import uuid from 'uuid';
 import { GET_USERS, ADD_USER, DELETE_USER, USERS_LOADING } from '../actions/types';
 
 const initialState = {

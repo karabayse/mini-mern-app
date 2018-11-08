@@ -25,15 +25,21 @@ class UserModal extends Component {
   }
 
   onChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
+    this.setState({
+       [e.target.name]: e.target.value,
+       [e.target.picture]: e.target.value,
+       [e.target.description]: e.target.value
+    });
   };
 
   onSubmit = e => {
     e.preventDefault();
 
     const newUser = {
-      name: this.state.name
-    }
+      name: this.state.name,
+      picture: this.state.picture,
+      description: this.state.description
+    };
 
     // Add user via addUser action
     this.props.addUser(newUser);
@@ -60,12 +66,26 @@ class UserModal extends Component {
           <ModalBody>
             <Form onSubmit={this.onSubmit}>
               <FormGroup>
-                <Label for="user">User</Label>
+                <Label for="user">New User</Label>
                 <Input
                   type="text"
                   name="name"
-                  id="item"
-                  placeholder="Add New User"
+                  id="user"
+                  placeholder="User Name"
+                  onChange={this.onChange}
+                />
+                <Input
+                  type="text"
+                  picture="picture"
+                  id="user"
+                  placeholder="Picture"
+                  onChange={this.onChange}
+                />
+                <Input
+                  type="text"
+                  description="description"
+                  id="user"
+                  placeholder="Description"
                   onChange={this.onChange}
                 />
                 <Button
