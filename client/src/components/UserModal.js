@@ -75,7 +75,7 @@ class UserModal extends Component {
                   onChange={this.onChange}
                 />
                 <Input
-                  type="text"
+                  type="file"
                   picture="picture"
                   id="user"
                   placeholder="Picture"
