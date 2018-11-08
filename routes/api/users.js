@@ -4,10 +4,11 @@ const router = express.Router();
 // User Model
 const User = require('../../models/User');
 
-// Create Routes
+// CREATE ROUTES
 // GET api/users
 router.get('/', (req, res) => {
   User.find()
+    .sort({ date: -1 })
     .then(users => res.json(users));
 });
 
