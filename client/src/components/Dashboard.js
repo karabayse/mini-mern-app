@@ -30,9 +30,9 @@ class Dashboard extends Component {
                   onClick={this.onDeleteClick.bind(this, _id)}
                 >&times;
                 </Button>
-                  {name}
-                  {picture}
-                  {description}
+                <div>{name}</div>
+                <div>{picture}</div>
+                <div>{description}</div>
                 </ListGroupItem>
               </CSSTransition>
             ))}
