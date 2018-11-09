@@ -4,4 +4,7 @@
 
 ```npm run dev``` to run client and back-end server
 
-* Dashboard with: Name, Profile Picture, Description
+Basic full stack React application containing a dashboard.  
+User has the ability to:
+* Add User Name, Profile Picture, Description
+* Delete Users
