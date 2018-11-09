@@ -1,6 +1,6 @@
 ## Mini MERN Application
 
-![Dashboard View](dashboard-view.png)
+![Dashboard View](dashboard-view2.png)
 
 ```npm run dev``` to run client and back-end server
 
